@@ -1,28 +1,16 @@
-# Shitty NCF: A Deliberately Bad Neural Collaborative Filtering Demo
+# Nanoncf
 
-> "The best way to learn why something works is to build a version that doesn't." - Me, probably
+A nano implementation of Neural Collaborative Filtering (NCF) that runs on CPU.
 
-This is a **deliberately simplified and opinionated** implementation of Neural Collaborative Filtering (NCF) from the paper ["Neural Collaborative Filtering"](https://arxiv.org/abs/1708.05031). 
+Welcome! This project provides a minimal, educational Python and React/Next.js demonstration of Neural Collaborative Filtering—a modern approach for building recommender systems. By focusing on practical simplicity, this repo helps you understand the essential ingredients needed to experiment, adapt, and learn from NCF without requiring special hardware or massive datasets.
 
-## Why This Exists
+## Key Features and Benefits
 
-Most ML demos show you the polished, production-ready version. This one shows you the **shitty** version - the one that runs on your laptop CPU, uses synthetic data, and makes questionable design choices. Why? Because understanding the limitations and trade-offs is just as important as understanding the algorithm.
-
-## What's "Shitty" About It?
-
-1. **CPU-only**: No GPU acceleration, because not everyone has one
-2. **Tiny embeddings**: 16-32 dimensions because we're not training on Netflix-scale data
-3. **Synthetic data**: Generated OTT/media/social media interactions that don't reflect real user behavior
-4. **No proper validation**: Train/test split? What's that?
-5. **Overfitting is a feature**: The model will memorize your synthetic data and you'll like it
-6. **Opinionated architecture**: Made choices that make sense for a demo, not production
-
-## Tech Stack
-
-- **Frontend**: Next.js + React (deployed on Vercel)
-- **Backend**: Flask API (can be serverless)
-- **Model**: PyTorch (CPU-only, small models)
-- **Data**: NumPy-generated synthetic data
+- **Runs on standard CPUs**: No GPU required, making machine learning experimentation accessible for everyone.
+- **Nano footprint**: Tiny model and codebase mean easier debugging, faster iteration, and straightforward customisation.
+- **Educational clarity**: Each file and function is focused on helping you understand the *why* behind NCF.
+- **Synthetic data**: Generates OTT, social media, and media-like recommendations so you can learn even without real data.
+- **Modern stack**: Next.js frontend, PyTorch backend, and easily deployable to Vercel for sharing and demos.
 
 ## Quick Start
 
@@ -31,79 +19,40 @@ Most ML demos show you the polished, production-ready version. This one shows yo
 pip install -r requirements.txt
 
 # Generate synthetic data
-python scripts/generate_synthetic_data.py
+ython scripts/generate_synthetic_data.py
 
-# Train the model (optional, pre-trained weights included)
+# Train a model (optional, pre-trained weights provided)
 python scripts/train_model.py
 
 # Install Node dependencies
 npm install
 
-# Run dev server
+# Start Next.js app
 npm run dev
+# Then open http://localhost:3000
 ```
 
 ## Project Structure
 
 ```
 .
-├── app/                    # Next.js app directory
-├── components/            # React components
-├── lib/                   # Model and utilities
-│   ├── ncf_model.py      # The "shitty" NCF implementation
-│   └── data_generator.py  # Synthetic data generator
-├── scripts/               # Training and data generation scripts
-├── public/                # Static assets
-└── api/                   # API routes (if using Next.js API)
+├── app/              # Next.js UI (pages, config, API endpoints)
+├── lib/              # Python NCF model and data generator
+├── scripts/          # Training and utility scripts
+├── public/           # Static frontend assets, precomputed recommendations
+├── models/           # Saved PyTorch weights (generated locally)
+├── data/             # Synthetic training/test data (generated locally)
 ```
 
-## The Model
+## Demo & Documentation
+- [Blog: Neural Collaborative Filtering Explained](BLOG_POST.md)
+- [Deployment Guide](DEPLOYMENT.md)
 
-Our NCF implementation is intentionally minimal:
-- **Embedding layers** for users and items (tiny dimensions)
-- **Multi-layer perceptron** for learning interactions (2-3 layers max)
-- **Binary cross-entropy loss** for implicit feedback
-- **No fancy tricks**: No dropout, no batch norm, no attention, no transformers
-
-## Synthetic Data
-
-We generate fake interactions for:
-- **OTT platforms**: Netflix-style watch history
-- **Social media**: Twitter-like engagement patterns
-- **Media**: YouTube-style video preferences
-
-The data is **obviously synthetic** - that's the point. Real recommendation systems need real data, and real data is messy.
-
-## Why This Matters
-
-Building a "shitty" version teaches you:
-1. What the algorithm actually needs vs. what's nice-to-have
-2. The trade-offs between simplicity and performance
-3. Why production systems are complex (they solve problems this doesn't)
-4. How to debug ML models when things go wrong
+## How to Contribute
+We encourage issues, questions, and PRs focused on education, usability, or clarity. You are welcome to fork this project and tailor it for your needs—whether for courseware, workshops, or personal study.
 
 ## License
+MIT—use freely for learning and teaching.
 
-MIT - Do whatever you want with this. It's intentionally shitty, so expectations are low.
-
-## Contributing
-
-This is intentionally minimal. If you want to make it less shitty, fork it and make your own version. The whole point is to show the bare minimum that "works."
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-## Deployment
-
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions, including Vercel setup.
-
-## Blog Post
-
-Read [BLOG_POST.md](BLOG_POST.md) for a deep dive into why this implementation is shitty and what that teaches us about recommendation systems.
-
-## License
-
-MIT - See [LICENSE](LICENSE) for details.
-
----
-
-**Built with ❤️ and intentionally minimal code.**
+## About
+Created as a practical, approachable resource for learning about recommender systems. Ideal for students, data scientists, and engineers interested in recommendation fundamentals, neural networks, and real-world deployment. If you find this useful, share your learnings and results!
