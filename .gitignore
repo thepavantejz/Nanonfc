@@ -10,6 +10,9 @@ venv/
 ENV/
 .venv
 
+# GitHub internal files (should not be pushed)
+.github/
+
 # Model files
 *.pth
 *.pt
