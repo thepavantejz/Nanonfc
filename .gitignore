@@ -104,3 +104,4 @@ tsconfig.json
 package.json
 package-lock.json
 .eslintrc.json
+requirements.txt
