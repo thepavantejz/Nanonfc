@@ -89,3 +89,6 @@ secrets/
 # Build artifacts
 *.tar.gz
 *.zip
+
+# Deployment config (not needed for local dev)
+vercel.json
